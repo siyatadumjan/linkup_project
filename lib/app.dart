@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linkup_project/core/app_theme/app_theme.dart';
 import 'package:linkup_project/view/user/home/bottom_navigation.dart';
 import 'package:linkup_project/view/user/login_screen.dart';
 import 'package:linkup_project/view/user/onboarding/onboarding.dart';
@@ -13,6 +14,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
+      theme: getApplicationTheme(),
       routes: {
         '/': (context) => const SplashScreenView(),
         '/onboarding': (context) => const OnboardingScreen(),

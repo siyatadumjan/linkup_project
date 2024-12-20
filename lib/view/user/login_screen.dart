@@ -20,9 +20,9 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                   children: const [
                     CircleAvatar(
-                      radius: 50,
+                      radius: 80, // Increased size for a bigger logo
                       backgroundImage: AssetImage(
-                          'assets/logo/linkup_logo.png'), // Ensure the logo is available at this path
+                          'assets/images/linkup.png'), // Ensure the logo is available at this path
                     ),
                     SizedBox(height: 10),
                     Text(
@@ -78,24 +78,35 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               // Create Account Section
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SignupPage()),
-                  );
-                },
-                child: const Text(
-                  'Don’t have an account? Create one',
-                  style: TextStyle(color: Colors.blue),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Don’t have an account?',
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignupPage()),
+                      );
+                    },
+                    child: const Text(
+                      'Create one',
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 30),
               // Footer Section
               const Text(
                 'By logging in, you agree to our Terms & Conditions and Privacy Policy.',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 12, color: Colors.grey),
+                style: TextStyle(
+                    fontSize: 12, color: Color.fromARGB(255, 251, 249, 249)),
               ),
             ],
           ),

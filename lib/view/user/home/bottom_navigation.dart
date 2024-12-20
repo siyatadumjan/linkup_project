@@ -28,7 +28,8 @@ class _BottomNavigationViewState extends State<BottomNavigationView> {
           height: 60,
         ),
         centerTitle: true,
-        backgroundColor: const Color(0xFFFF66C4),
+        // backgroundColor: const Color(0xFFFF66C4),
+        automaticallyImplyLeading: false, // Remove the back button
       ),
       body: lstBottomScreen[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -46,10 +47,6 @@ class _BottomNavigationViewState extends State<BottomNavigationView> {
             icon: Icon(Icons.person),
             label: 'Profile',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.adb_outlined),
-          //   label: 'About',
-          // ),
         ],
         currentIndex: _selectedIndex,
         onTap: (index) {

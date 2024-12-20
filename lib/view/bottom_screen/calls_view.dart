@@ -7,92 +7,102 @@ class CallView extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Map<String, String>> calls = [
       {
-        'name': 'John Doe',
+        'name': 'Supragya Basnet',
         'time': 'Today, 10:30 AM',
         'type': 'incoming',
       },
       {
-        'name': 'Alice Smith',
+        'name': 'Susmita Bishwakarma',
         'time': 'Yesterday, 5:45 PM',
         'type': 'outgoing',
       },
       {
-        'name': 'Robert Brown',
+        'name': 'Ashmita sahi',
         'time': 'Yesterday, 3:15 PM',
         'type': 'missed',
       },
       {
-        'name': 'Emma Wilson',
+        'name': 'Ashmita B',
         'time': 'Monday, 8:00 AM',
         'type': 'incoming',
       },
       {
-        'name': 'Olivia Johnson',
+        'name': 'Ashish Mool',
         'time': 'Sunday, 7:45 PM',
         'type': 'outgoing',
       },
       {
-        'name': 'Liam Martinez',
+        'name': 'Lucy',
         'time': 'Sunday, 6:30 PM',
         'type': 'missed',
       },
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Calls'),
-        centerTitle: true,
-        backgroundColor: const Color(0xFFFF66C4), // Match theme
-      ),
-      body: ListView.builder(
-        itemCount: calls.length,
-        itemBuilder: (context, index) {
-          final call = calls[index];
-          final IconData callIcon;
-          final Color iconColor;
-
-          // Determine the call type icon and color
-          switch (call['type']) {
-            case 'incoming':
-              callIcon = Icons.call_received;
-              iconColor = Colors.green;
-              break;
-            case 'outgoing':
-              callIcon = Icons.call_made;
-              iconColor = Colors.blue;
-              break;
-            case 'missed':
-              callIcon = Icons.call_missed;
-              iconColor = Colors.red;
-              break;
-            default:
-              callIcon = Icons.phone;
-              iconColor = Colors.grey;
-          }
-
-          return ListTile(
-            leading: Icon(
-              callIcon,
-              color: iconColor,
+      body: Column(
+        children: [
+          const SizedBox(height: 20), // Adjust to position the "Calls" text
+          const Text(
+            'Calls',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
             ),
-            title: Text(
-              call['name']!,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-            subtitle: Text(call['time']!),
-            trailing: IconButton(
-              icon: const Icon(Icons.phone, color: Colors.green),
-              onPressed: () {
-                // Action when call button is tapped
-                print('Calling ${call['name']}');
+            textAlign: TextAlign.center,
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: calls.length,
+              itemBuilder: (context, index) {
+                final call = calls[index];
+                final IconData callIcon;
+                final Color iconColor;
+
+                // Determine the call type icon and color
+                switch (call['type']) {
+                  case 'incoming':
+                    callIcon = Icons.call_received;
+                    iconColor = Colors.green;
+                    break;
+                  case 'outgoing':
+                    callIcon = Icons.call_made;
+                    iconColor = Colors.blue;
+                    break;
+                  case 'missed':
+                    callIcon = Icons.call_missed;
+                    iconColor = Colors.red;
+                    break;
+                  default:
+                    callIcon = Icons.phone;
+                    iconColor = Colors.grey;
+                }
+
+                return ListTile(
+                  leading: Icon(
+                    callIcon,
+                    color: iconColor,
+                  ),
+                  title: Text(
+                    call['name']!,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(call['time']!),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.phone, color: Colors.green),
+                    onPressed: () {
+                      // Action when call button is tapped
+                      print('Calling ${call['name']}');
+                    },
+                  ),
+                  onTap: () {
+                    // Action when call item is tapped
+                    print('Tapped on ${call['name']}');
+                  },
+                );
               },
             ),
-            onTap: () {
-              // Action when call item is tapped
-              print('Tapped on ${call['name']}');
-            },
-          );
-        },
+          ),
+        ],
       ),
     );
   }
