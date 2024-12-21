@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:linkup_project/view/user/login_screen.dart';
-// Import the home screen after onboarding
-
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -24,6 +22,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     'Connect instantly with people, whether for a chat, video call, or group conversations.',
     'Start chatting now and make the most of the powerful features of LinkUp.'
   ];
+  final List<String> _images = [
+    'assets/images/images-3.jpeg',
+    'assets/images/images-1.jpg',
+    'assets/images/images-2.jpeg',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +47,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 return OnboardingPage(
                   title: _titles[index],
                   description: _descriptions[index],
+                  imagePath: _images[index], // Add image path here
                 );
               },
             ),
@@ -71,7 +75,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       // Navigate to the home screen after onboarding
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => const LoginPage()),
+                        MaterialPageRoute(
+                            builder: (context) => const LoginPage()),
                       );
                     } else {
                       _pageController.nextPage(
@@ -97,8 +102,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 class OnboardingPage extends StatelessWidget {
   final String title;
   final String description;
+  final String imagePath;
 
-  const OnboardingPage({super.key, required this.title, required this.description});
+  const OnboardingPage(
+      {super.key,
+      required this.title,
+      required this.description,
+      required this.imagePath});
 
   @override
   Widget build(BuildContext context) {
@@ -108,6 +118,13 @@ class OnboardingPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Image.asset(
+            imagePath,
+            height: 250, // Adjust image size as needed
+            width: 250,
+            fit: BoxFit.cover, // Maintain aspect ratio
+          ),
+          const SizedBox(height: 20),
           Text(
             title,
             style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),

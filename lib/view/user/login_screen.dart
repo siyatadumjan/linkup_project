@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:linkup_project/view/user/home/home_page.dart';
+import 'package:linkup_project/view/user/home/bottom_navigation.dart';
 import 'package:linkup_project/view/user/register_screen.dart';
 
 class LoginPage extends StatelessWidget {
@@ -8,12 +8,35 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const SizedBox(height: 80),
+              // Logo Section
+              Center(
+                child: Column(
+                  children: const [
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundImage: AssetImage(
+                          'assets/logo/linkup_logo.png'), // Ensure the logo is available at this path
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Welcome to LinkUp',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 50),
+              // Login Section
               const Text(
                 'Login',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -23,6 +46,7 @@ class LoginPage extends StatelessWidget {
                 decoration: InputDecoration(
                   labelText: 'Email',
                   border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.email),
                 ),
               ),
               const SizedBox(height: 20),
@@ -30,6 +54,7 @@ class LoginPage extends StatelessWidget {
                 decoration: InputDecoration(
                   labelText: 'Password',
                   border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.lock),
                   suffixIcon: Icon(Icons.visibility),
                 ),
                 obscureText: true,
@@ -37,31 +62,40 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Navigate to HomePage on login button tap
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomePage()),
+                    MaterialPageRoute(
+                        builder: (context) => const BottomNavigationView()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size(double.infinity, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
                 child: const Text('Login'),
               ),
-              const SizedBox(height: 20),
-              ElevatedButton(
+              const SizedBox(height: 10),
+              // Create Account Section
+              TextButton(
                 onPressed: () {
-                  // Navigate to HomePage on this additional button tap
-                  Navigator.pushReplacement(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const SignupPage()),
                   );
                 },
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(double.infinity, 50),
-                  backgroundColor: Colors.black,
+                child: const Text(
+                  'Don’t have an account? Create one',
+                  style: TextStyle(color: Colors.blue),
                 ),
-                child: const Text('Create Account'),
+              ),
+              const SizedBox(height: 30),
+              // Footer Section
+              const Text(
+                'By logging in, you agree to our Terms & Conditions and Privacy Policy.',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 12, color: Colors.grey),
               ),
             ],
           ),

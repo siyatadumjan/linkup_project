@@ -8,8 +8,7 @@ class SplashScreenView extends StatelessWidget {
   Widget build(BuildContext context) {
     // Navigate to the login screen after a delay
     Timer(const Duration(seconds: 5), () {
-      Navigator.pushReplacementNamed(
-          context, '/onboarding'); // Navigate to register screen
+      Navigator.pushReplacementNamed(context, '/onboarding');
     });
 
     return Scaffold(
@@ -19,16 +18,13 @@ class SplashScreenView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Replace Lottie animation with your logo
               Image.asset(
-                'assets/images/linkup.png', // Path to your logo
-                height: 200, // Adjust the height of your logo
-                width: 200, // Adjust the width of your logo if necessary
-                fit: BoxFit.contain, // Maintain aspect ratio
+                'assets/images/linkup.png',
+                height: 200,
+                width: 200,
+                fit: BoxFit.contain,
               ),
-              // Optionally, you can add a text or any other widget here
               const SizedBox(height: 20),
-              const CircularProgressIndicator(), // Loading indicator (optional)
             ],
           ),
         ),
