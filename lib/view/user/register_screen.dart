@@ -10,8 +10,17 @@ class SignupPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const SizedBox(
+                  height:
+                      80), // Adjust the height to move the logo closer to the top
+              CircleAvatar(
+                radius: 80, // Increased size for a bigger logo
+                backgroundImage: AssetImage(
+                    'assets/images/linkup.png'), // Ensure the logo is available at this path
+              ),
+              const SizedBox(height: 10),
               const Text(
                 'Create Account',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -47,7 +56,6 @@ class SignupPage extends StatelessWidget {
                 },
                 style: ElevatedButton.styleFrom(
                   minimumSize: const Size(double.infinity, 50),
-                  backgroundColor: const Color.fromARGB(255, 234, 116, 155),
                 ),
                 child: const Text('Create Account'),
               ),
