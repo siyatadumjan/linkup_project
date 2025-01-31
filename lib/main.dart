@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:linkup_project/app.dart'; // Import your app.dart file
 
-// Entry point of the application
-void main() {
+import 'app/app.dart';
+import 'app/di/di.dart';
+import 'core/network/hive_service.dart';
+
+// Initialize once in the very beginning
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Initialize Hive Database
+  await HiveService().init();
+  await initDependencies(); // Initialize dependencies
   runApp(
-    const App(), // Run the app with the App widget as the root
+    App(),
   );
 }
