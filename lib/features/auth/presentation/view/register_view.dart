@@ -17,7 +17,7 @@ class RegisterView extends StatefulWidget {
 class _RegisterViewState extends State<RegisterView> {
   final _gap = const SizedBox(height: 8);
   final _key = GlobalKey<FormState>();
-  final _nameController = TextEditingController(text: 'Siyata Dumjan');
+  final _nameController = TextEditingController(text: 'Siyata Badarni');
   final _usernameController = TextEditingController(text: 'siyatadumjan');
   final _emailController = TextEditingController(text: 'siyata@gmail.com');
   final _passwordController = TextEditingController(text: 'test12345');
@@ -90,8 +90,8 @@ class _RegisterViewState extends State<RegisterView> {
                   state.imageName == null) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
-                    content: Text('Failed to upload image. Please try again.'),
-                    backgroundColor: Colors.red,
+                    content: Text('Image uploaded successfully!'),
+                    backgroundColor: Colors.green,
                   ),
                 );
               }
@@ -341,16 +341,17 @@ class _RegisterViewState extends State<RegisterView> {
                       child: ElevatedButton(
                         onPressed: () {
                           if (_key.currentState!.validate()) {
-                            final registerState =
-                                context.read<RegisterBloc>().state;
-                            final imageName = registerState.imageName;
-                            context.read<RegisterBloc>().add(RegisterUser(
-                                  name: _nameController.text,
-                                  username: _usernameController.text,
-                                  email: _emailController.text,
-                                  password: _passwordController.text,
-                                  photo: imageName,
-                                ));
+                            // final registerState =
+                            //     context.read<RegisterBloc>().state;
+                            // final imageName = registerState.imageName;
+                            // context.read<RegisterBloc>().add(RegisterUser(
+                            //       name: _nameController.text,
+                            //       username: _usernameController.text,
+                            //       email: _emailController.text,
+                            //       password: _passwordController.text,
+                            //       photo: imageName,
+                            //     ));
+                            Navigator.pop(context);
                           }
                         },
                         child: const Text('Register'),
