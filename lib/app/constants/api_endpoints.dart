@@ -8,7 +8,7 @@ class ApiEndpoints {
   // static const String baseUrl = "http://10.0.2.2:5000/api/";
 
   // For iPhone
-  static const String baseUrl = "http://localhost:6278/api/v1/";
+  static const String baseUrl = "http://localhost:8080/api/v1/";
 
   // ============= Auth Routes =============
   static const String login = "auth/sign-in";
