@@ -1,0 +1,2 @@
+C:/Users/shisi/OneDrive/Desktop/linkup/linkup-mobile/android/app/.cxx/Debug/t5j3rf22/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/shisi/OneDrive/Desktop/linkup/linkup-mobile/android/app/.cxx/Debug/t5j3rf22/armeabi-v7a/CMakeFiles/rebuild_cache.dir
