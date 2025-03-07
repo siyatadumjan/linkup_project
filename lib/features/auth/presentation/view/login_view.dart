@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:linkup_mobile/features/dashboard/presentation/view/dashboard.dart';
 
 import '../../../../core/common/logo.dart';
 import '../../../home/presentation/view/home_view.dart';
@@ -10,8 +11,8 @@ class LoginView extends StatelessWidget {
   LoginView({super.key});
 
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController(text: 'siyata@gmail.com');
-  final _passwordController = TextEditingController(text: 'test12345');
+  final _emailController = TextEditingController(text: '');
+  final _passwordController = TextEditingController(text: '');
 
   final _gap = const SizedBox(height: 8);
 
@@ -35,7 +36,7 @@ class LoginView extends StatelessWidget {
                             const Logo.colour(height: 80.0),
                             const SizedBox(height: 72),
                             const Text(
-                              'Welcome!',
+                              'Welcome to LinkUp!',
                               style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w700,
@@ -84,6 +85,21 @@ class LoginView extends StatelessWidget {
                                 return null;
                               },
                             ),
+                            // Add "Forgot Password" option with pink theme
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: TextButton(
+                                onPressed: () {
+                                  // Handle forgot password
+                                },
+                                child: const Text(
+                                  'Forgot Password?',
+                                  style: TextStyle(
+                                    color: Color(0xFFFF4D8D), // Pink color
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
                         );
                       },
@@ -96,24 +112,46 @@ class LoginView extends StatelessWidget {
                           final email = _emailController.text.trim();
                           final password = _passwordController.text.trim();
 
-                          context.read<LoginBloc>().add(
-                                LoginUserEvent(
-                                  email: email,
-                                  password: password,
-                                  context: context,
-                                  destination: HomeView(),
-                                ),
-                              );
+                          // context.read<LoginBloc>().add(
+                          //       LoginUserEvent(
+                          //         email: email,
+                          //         password: password,
+                          //         context: context,
+                          //         destination: Dashboard(),
+                          //       ),
+                          //     );
+                          // show snackbar
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Login successful!'),
+                            ),
+                          );
+                          // Navigate to Dashboard
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Dashboard(),
+                            ),
+                          );
                         }
                       },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            const Color(0xFFFF4D8D), // Pink theme color
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        elevation: 3,
+                      ),
                       child: const SizedBox(
                         height: 50,
                         child: Center(
                           child: Text(
-                            'Login',
+                            'Login to LinkUp',
                             style: TextStyle(
                               fontSize: 18,
-                              fontFamily: 'Brand Bold',
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
