@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Logo extends StatelessWidget {
   final String assetPath;
@@ -8,22 +9,16 @@ class Logo extends StatelessWidget {
 
   // Colour Logo
   const Logo.colour({Key? key, double height = 80.0})
-      : this._(
-            key: key,
-            assetPath: 'assets/icons/linkup_logo.png',
-            height: height);
+      : this._(key: key, assetPath: 'assets/icons/logo.svg', height: height);
 
   // White Logo
   const Logo.white({Key? key, double height = 80.0})
-      : this._(
-            key: key,
-            assetPath: 'assets/icons/linkup_logo.png',
-            height: height);
+      : this._(key: key, assetPath: 'assets/icons/logo.svg', height: height);
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Image.asset(
+      child: SvgPicture.asset(
         assetPath,
         height: height,
       ),
