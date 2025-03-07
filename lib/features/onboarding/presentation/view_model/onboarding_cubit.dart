@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../auth/presentation/view/login_view.dart';
+import 'package:linkup_mobile/features/auth/presentation/view/login_view.dart';
+import 'package:linkup_mobile/features/dashboard/presentation/view/dashboard.dart';
 import '../../../auth/presentation/view_model/login/login_bloc.dart';
 
 class OnboardingCubit extends Cubit<void> {
